@@ -12,13 +12,9 @@ async function carregarCSV(url) {
         .map(linha => linha.split(","));
 }
 
-function renderizar(titulo, dados) {
+function renderizar(dados) {
     const container = document.getElementById("categories");
-
-    const categoria = document.createElement("div");
-    categoria.className = "category";
-
-    categoria.innerHTML = `<h2>${titulo}</h2>`;
+    container.innerHTML = "";
 
     dados.forEach(player => {
         if (!player[0]) return;
@@ -27,36 +23,23 @@ function renderizar(titulo, dados) {
         div.className = "player";
 
         div.innerHTML = `
-            <div>
-                <strong>${player[0]}</strong>
-                <div class="stages">
-                    Categoria: ${player[1] || "-"}<br>
-                    E1: ${player[2] || "-"} |
-                    E2: ${player[3] || "-"} |
-                    E3: ${player[4] || "-"}<br>
-                    E4: ${player[5] || "-"} |
-                    E5: ${player[6] || "-"} |
-                    E6: ${player[7] || "-"}<br>
-                    Status: ${player[8] || "DISPUTANDO"}
-                </div>
-            </div>
+            <h3>${player[0]}</h3>
+            <p>Etapa 1: ${player[1] || "-"}</p>
+            <p>Etapa 2: ${player[2] || "-"}</p>
+            <p>Etapa 3: ${player[3] || "-"}</p>
+            <p>Etapa 4: ${player[4] || "-"}</p>
+            <p>Etapa 5: ${player[5] || "-"}</p>
+            <p>Etapa 6: ${player[6] || "-"}</p>
         `;
 
-        categoria.appendChild(div);
+        container.appendChild(div);
     });
-
-    container.appendChild(categoria);
 }
 
-async function iniciar() {
-    const container = document.getElementById("categories");
-    container.innerHTML = "";
-
-    const single = await carregarCSV(SINGLE_URL);
-    const double = await carregarCSV(DOUBLE_URL);
-
-    renderizar("SINGLE", single);
-    renderizar("DOUBLE", double);
+async function showMode(mode) {
+    const url = mode === "single" ? SINGLE_URL : DOUBLE_URL;
+    const dados = await carregarCSV(url);
+    renderizar(dados);
 }
 
-iniciar();
+showMode("single");
