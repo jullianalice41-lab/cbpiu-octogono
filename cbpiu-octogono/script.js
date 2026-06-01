@@ -1,68 +1,29 @@
-const data = {
-  single: {
-    Beginner: [
-      {
-        name: "Player 1",
-        photo: "assets/players/player1.jpg",
-        stages: ["1º", "2º", "-", "-", "-", "-"]
-      }
-    ],
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR9xqXMG_hR98qHyUpBkHyY49cjDw3sHcgUnp4381JB3JT4lU-g1ZgqDyDzBvMX8Pl8WHZstfrdI3aE/pub?output=csv";
 
-    Intermediate: [],
-    "Intermediate+": [],
-    Advanced: [],
-    "Advanced+": [],
-    Expert: [],
-    Master: []
-  },
+async function carregarDados() {
+    const resposta = await fetch(SHEET_URL);
+    const texto = await resposta.text();
 
-  double: {
-    Beginner: [],
-    Intermediate: [],
-    "Intermediate+": [],
-    Advanced: [],
-    "Advanced+": [],
-    Expert: [],
-    Master: []
-  }
-};
+    const linhas = texto.split("\n").map(l => l.split(","));
 
-function showMode(mode) {
-  const container = document.getElementById("categories");
-  container.innerHTML = "";
+    const container = document.getElementById("categories");
+    container.innerHTML = "";
 
-  Object.keys(data[mode]).forEach(category => {
-    const div = document.createElement("div");
-    div.className = "category";
+    linhas.slice(1).forEach(linha => {
+        const nome = linha[0];
+        const etapa1 = linha[1];
+        const etapa2 = linha[2];
 
-    let html = `<h2>${category}</h2>`;
+        const card = document.createElement("div");
+        card.innerHTML = `
+            <h3>${nome}</h3>
+            <p>Etapa 1: ${etapa1}</p>
+            <p>Etapa 2: ${etapa2}</p>
+            <hr>
+        `;
 
-    data[mode][category].forEach(player => {
-      html += `
-        <div class="player">
-          <img src="${player.photo}" alt="${player.name}">
-          <div>
-            <strong>${player.name}</strong>
-            <div class="stages">
-              E1: ${player.stages[0]} |
-              E2: ${player.stages[1]} |
-              E3: ${player.stages[2]} |
-              E4: ${player.stages[3]} |
-              E5: ${player.stages[4]} |
-              E6: ${player.stages[5]}
-            </div>
-          </div>
-        </div>
-      `;
+        container.appendChild(card);
     });
-
-    if (data[mode][category].length === 0) {
-      html += "<p>Nenhum player cadastrado.</p>";
-    }
-
-    div.innerHTML = html;
-    container.appendChild(div);
-  });
 }
 
-showMode("single");
+carregarDados();
