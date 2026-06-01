@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>CBPIU</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CBPIU - Octógono Natal</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>FUNCIONOU</h1>
+
+<header>
+  <img src="assets/logo-cbpiu.png" class="logo" alt="CBPIU">
+
+  <div class="title-area">
+    <h1>CBPIU</h1>
+    <p>Octógono Natal • Circuito Brasileiro de Pump It Up</p>
+  </div>
+
+  <img src="assets/logo-octogono.png" class="logo" alt="Octógono Natal">
+</header>
+
+<nav>
+  <button onclick="showMode('single')">SINGLE</button>
+  <button onclick="showMode('double')">DOUBLE</button>
+</nav>
+
+<div id="categories"></div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
