@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 3px solid #f2c200;
+}
+
+.logo {
+  height: 80px;
+}
+
+.title-area {
+  text-align: center;
+}
+
+.title-area h1 {
+  margin: 0;
+  color: #f2c200;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+button {
+  background: #f2c200;
+  color: #000;
+  border: none;
+  padding: 12px 25px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.category {
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid #f2c200;
+  border-radius: 12px;
+}
+
+.category h2 {
+  color: #f2c200;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.player img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.stages {
+  color: #ccc;
+  margin-top: 5px;
+}
