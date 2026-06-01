@@ -1,80 +1,130 @@
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #000;
-  color: #fff;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(180deg, #000000, #111111);
+    color: white;
+    min-height: 100vh;
 }
 
+/* HEADER */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 3px solid #f2c200;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 30px;
+    background: rgba(0,0,0,0.95);
+    border-bottom: 3px solid #f2c200;
+    box-shadow: 0 0 25px #f2c20055;
 }
 
 .logo {
-  height: 80px;
-}
-
-.title-area {
-  text-align: center;
+    height: 85px;
 }
 
 .title-area h1 {
-  margin: 0;
-  color: #f2c200;
+    margin: 0;
+    font-size: 2rem;
+    color: #f2c200;
+    text-shadow: 0 0 12px #f2c200;
 }
 
+.title-area p {
+    margin: 5px 0 0;
+    color: #ffffff;
+    letter-spacing: 2px;
+    font-size: 0.95rem;
+}
+
+/* BOTÕES */
 nav {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 25px;
 }
 
 button {
-  background: #f2c200;
-  color: #000;
-  border: none;
-  padding: 12px 25px;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 6px;
+    background: #000;
+    color: #f2c200;
+    border: 2px solid #f2c200;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 12px #f2c20044;
 }
 
 button:hover {
-  opacity: 0.9;
+    background: #f2c200;
+    color: #000;
+    box-shadow: 0 0 25px #f2c200;
 }
 
+/* CATEGORIAS */
 .category {
-  margin: 20px;
-  padding: 20px;
-  border: 2px solid #f2c200;
-  border-radius: 12px;
+    margin: 25px auto;
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(255,255,255,0.03);
+    border: 2px solid #f2c200;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 0 20px #f2c20022;
 }
 
 .category h2 {
-  color: #f2c200;
+    color: #f2c200;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #f2c200;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
 }
 
+/* PLAYERS */
 .player {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-top: 15px;
-  padding: 10px;
-  border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.player:hover {
+    transform: scale(1.02);
+    border-color: #f2c200;
+    box-shadow: 0 0 20px #f2c20055;
 }
 
 .player img {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  object-fit: cover;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #f2c200;
+    box-shadow: 0 0 12px #f2c20066;
+}
+
+.player strong {
+    color: #fff;
+    font-size: 1.15rem;
+    letter-spacing: 1px;
 }
 
 .stages {
-  color: #ccc;
-  margin-top: 5px;
+    margin-top: 8px;
+    color: #ddd;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* EFEITO SCOREBOARD */
+#categories {
+    padding-bottom: 50px;
 }
