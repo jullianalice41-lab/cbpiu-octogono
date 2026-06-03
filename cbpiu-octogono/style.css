@@ -7,56 +7,25 @@ body {
     min-height: 100vh;
 }
 
-header {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    width: 100%;
-    border-bottom: 2px solid var(--border-color);
-    box-sizing: border-box; }
+header {<!-- --- Novo código HTML para o Header (Substitua o antigo) --- -->
+<header>
+    <div class="logo-container">
+        <!-- Logo Esquerdo -->
+        <img src="assets/logo-cbpiu.png.png" alt="CBPIU">
+    </div>
+    
+    <div class="header-center">
+        <!-- Conteúdo Central -->
+        <h1>CBPIU</h1>
+        <p>OCTÓGONO NATAL</p>
+    </div>
 
-
-.logo-container img {
-    height: 80px; 
-    object-fit: contain; 
-}
-.header-center {
-    text-align: center;
-}
-
-.header-center h1 {
-    margin: 0;
-    font-size: 1.8rem;
-    color: var(--accent-yellow);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.header-center p {
-    margin: 5px 0 0 0;
-    color: #aaaaaa;
-    font-weight: bold;
-}
-
-.logo {
-    height: 90px;
-}
-
-.title-area h1 {
-    margin: 0;
-    font-size: 2.2rem;
-    color: #00f7ff;
-    text-shadow:
-        0 0 8px #00f7ff,
-        0 0 18px #00f7ff;
-}
-
-.title-area p {
-    margin: 6px 0 0;
-    color: #ff3cff;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px #ff3cff;
-}
+    <div class="logo-container">
+        <!-- Logo Direito -->
+        <img src="assets/logo-octogono.png.png" alt="Octógono Natal">
+    </div>
+</header>
+<!-- --- Fim do novo código HTML para o Header --- -->}
 
 /* NAV */
 nav {
