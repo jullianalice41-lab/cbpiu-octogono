@@ -7,16 +7,35 @@ body {
     min-height: 100vh;
 }
 
-/* HEADER */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background: rgba(5, 5, 20, 0.9);
-    border-bottom: 2px solid #00f7ff;
-    box-shadow: 0 0 25px #00f7ff55;
-    backdrop-filter: blur(10px);
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%;
+    border-bottom: 2px solid var(--border-color);
+    box-sizing: border-box; }
+
+
+.logo-container img {
+    height: 80px; 
+    object-fit: contain; 
+}
+.header-center {
+    text-align: center;
+}
+
+.header-center h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--accent-yellow);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.header-center p {
+    margin: 5px 0 0 0;
+    color: #aaaaaa;
+    font-weight: bold;
 }
 
 .logo {
