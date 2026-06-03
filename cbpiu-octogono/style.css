@@ -6,27 +6,34 @@ body {
     color: white;
     min-height: 100vh;
 }
-
-header {<!-- --- Novo código HTML para o Header (Substitua o antigo) --- -->
-<header>
-    <div class="logo-container">
-        <!-- Logo Esquerdo -->
-        <img src="assets/logo-cbpiu.png.png" alt="CBPIU">
-    </div>
-    
-    <div class="header-center">
-        <!-- Conteúdo Central -->
-        <h1>CBPIU</h1>
-        <p>OCTÓGONO NATAL</p>
-    </div>
-
-    <div class="logo-container">
-        <!-- Logo Direito -->
-        <img src="assets/logo-octogono.png.png" alt="Octógono Natal">
-    </div>
-</header>
-<!-- --- Fim do novo código HTML para o Header --- -->}
-
+header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 1rem 5%; 
+    width: 100%;
+    border-bottom: 2px solid var(--border-color);
+    box-sizing: border-box; 
+}
+.logo-container img {
+    height: 80px; 
+    object-fit: contain;
+}
+.header-center {
+    text-align: center;
+}
+.header-center h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--accent-yellow);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.header-center p {
+    margin: 5px 0 0 0;
+    color: #aaaaaa;
+    font-weight: bold;
+}
 /* NAV */
 nav {
     display: flex;
