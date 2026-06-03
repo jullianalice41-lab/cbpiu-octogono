@@ -1,21 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<header>
-    <div class="logo-container">
-        <img src="assets/logo-cbpiu.png.png" alt="CBPIU">
-    </div>
-    <div class="header-center">
-        <h1>CBPIU</h1>
-        <p>OCTÓGONO NATAL</p>
-    </div>
-
-    <div class="logo-container">
-        <img src="assets/logo-octogono.png.png" alt="Octógono Natal">
-    </div>
-</header>
-    </div>
-</header>
-</div>> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CBPIU - Octógono Natal</title>
@@ -46,7 +31,7 @@
             border-bottom: 2px solid var(--border-color);
         }
 
-        /* Se tiver as logos, elas vão aparecer aqui */
+        
         .logos {
             display: flex;
             justify-content: center;
@@ -142,7 +127,7 @@
             width: 100%;
             border-collapse: collapse;
             text-align: left;
-            white-space: nowrap; /* Evita que o texto quebre linhas na tabela */
+            white-space: nowrap; 
         }
 
         th, td {
@@ -161,7 +146,7 @@
             background-color: #2a2a2a;
         }
 
-        /* Destaques visuais */
+        
         .pos-1 { color: var(--accent-yellow); font-weight: bold; font-size: 1.2rem; }
         .pos-2 { color: #C0C0C0; font-weight: bold; font-size: 1.1rem; }
         .pos-3 { color: #CD7F32; font-weight: bold; font-size: 1.1rem; }
@@ -191,8 +176,10 @@
 
     <header>
         <div class="logos">
-            <!-- Adicione as imagens se tiver, caso não, pode apagar a div logos -->
-            <!-- <img src="logo-cbpiu.png" alt="CBPIU"> -->
+    <img src="logo-cbpiu.png" alt="Logo CBPIU">
+    <img src="logo-octogono.png" alt="Logo Octógono">
+</div>
+            
         </div>
         <h1>CBPIU</h1>
         <p>OCTÓGONO NATAL</p>
@@ -210,12 +197,12 @@
         <table id="rankingTable">
             <thead>
                 <tr id="tableHeader">
-                    <!-- O cabeçalho será gerado dinamicamente -->
+                    
                     <th>Carregando...</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Os dados entram aqui -->
+                
             </tbody>
         </table>
     </div>
@@ -225,7 +212,7 @@
     </footer>
 
     <script>
-        // Os links exatos das suas planilhas
+        
         const SHEET_URL_SINGLE = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRn8UMw0k19GCLo1WgGZyAR1NOrdajkb5CD46hS6-5LMYDSpnuTrIpoNmLxhjzcXcwihMBBx85Yf_Jc/pub?gid=1011161537&single=true&output=csv';
         const SHEET_URL_DOUBLE = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRn8UMw0k19GCLo1WgGZyAR1NOrdajkb5CD46hS6-5LMYDSpnuTrIpoNmLxhjzcXcwihMBBx85Yf_Jc/pub?gid=1689160095&single=true&output=csv';
 
@@ -251,7 +238,7 @@
             }
         }
 
-        // Função segura para ler o CSV (ignora vírgulas dentro de textos com aspas)
+        
         function parseCSVRow(str) {
             let result = [];
             let current = '';
@@ -281,7 +268,7 @@
             const rows = csv.split('\n');
             if(rows.length === 0) return;
 
-            // Extrai o cabeçalho (Primeira linha)
+            
             const headers = parseCSVRow(rows[0]);
             let headerHTML = "<tr>";
             headers.forEach(header => {
@@ -290,7 +277,7 @@
             headerHTML += "</tr>";
             tableHead.innerHTML = headerHTML;
 
-            // Começa da linha 1 para pular o cabeçalho
+            
             for (let i = 1; i < rows.length; i++) {
                 const rowText = rows[i].trim();
                 if (!rowText) continue; 
@@ -302,14 +289,14 @@
                     let className = '';
                     let content = colData;
 
-                    // Lógica para colorir e dar estilo
-                    if (index === 0) { // Assume que a coluna 0 é a Posição
+                    
+                    if (index === 0) { 
                         if(colData == "1") className = "pos-1";
                         if(colData == "2") className = "pos-2";
                         if(colData == "3") className = "pos-3";
                     }
 
-                    // Verifica se tem Grade SSS, SS ou S em qualquer coluna para estilizar
+                 
                     let upperCol = colData.toUpperCase();
                     if (upperCol === 'SSS' || upperCol.includes('SSS')) className = 'grade-sss';
                     else if (upperCol === 'SS' || upperCol.includes('SS+')) className = 'grade-ss';
@@ -339,12 +326,11 @@
             let table = document.getElementById("rankingTable");
             let tr = table.getElementsByTagName("tr");
 
-            // Começa de 1 porque a 0 é o thead (cabeçalho não é afetado, mas na estrutura tbdoy é diferente)
-            // Para garantir, vamos pegar apenas os TRs do tbody
+            
             let tbodyTr = table.querySelector("tbody").getElementsByTagName("tr");
 
             for (let i = 0; i < tbodyTr.length; i++) {
-                // Pega todas as colunas daquela linha para buscar em qualquer campo
+               
                 let tds = tbodyTr[i].getElementsByTagName("td");
                 let match = false;
                 
@@ -366,5 +352,7 @@
             }
         }
     </script>
+</body>
+</html>
 </body>
 </html>
