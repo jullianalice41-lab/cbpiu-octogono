@@ -1,32 +1,355 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CBPIU - Octógono Natal</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBPIU - Octógono Natal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --panel-bg: #1a1a1a;
+            --text-main: #ffffff;
+            --accent-yellow: #FFD700;
+            --border-color: #333333;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            width: 100%;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        /* Se tiver as logos, elas vão aparecer aqui */
+        .logos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .logos img {
+            height: 80px;
+            object-fit: contain;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--accent-yellow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p { 
+            margin: 5px 0 0 0; 
+            color: #aaaaaa; 
+            font-weight: bold;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 90%;
+            max-width: 800px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-tab {
+            flex: 1;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background-color: var(--panel-bg);
+            color: var(--text-main);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .btn-tab:hover {
+            border-color: #555;
+        }
+
+        .btn-tab.active {
+            background-color: var(--accent-yellow);
+            color: var(--bg-color);
+            border-color: var(--accent-yellow);
+        }
+
+        .search-bar {
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--panel-bg);
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .search-bar:focus {
+            border-color: var(--accent-yellow);
+        }
+
+        .table-container {
+            width: 90%;
+            max-width: 800px;
+            overflow-x: auto;
+            background-color: var(--panel-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            white-space: nowrap; /* Evita que o texto quebre linhas na tabela */
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #222;
+            color: var(--accent-yellow);
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        tr:hover {
+            background-color: #2a2a2a;
+        }
+
+        /* Destaques visuais */
+        .pos-1 { color: var(--accent-yellow); font-weight: bold; font-size: 1.2rem; }
+        .pos-2 { color: #C0C0C0; font-weight: bold; font-size: 1.1rem; }
+        .pos-3 { color: #CD7F32; font-weight: bold; font-size: 1.1rem; }
+        
+        .grade-sss { color: #FFD700; font-weight: bold; text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); }
+        .grade-ss { color: #fff; font-weight: bold; }
+        .grade-s { color: #FF4500; font-weight: bold; }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            width: 100%;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer a {
+            color: var(--accent-yellow);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <img src="assets/logo-cbpiu.png" class="logo" alt="CBPIU">
+    <header>
+        <div class="logos">
+            <!-- Adicione as imagens se tiver, caso não, pode apagar a div logos -->
+            <!-- <img src="logo-cbpiu.png" alt="CBPIU"> -->
+        </div>
+        <h1>CBPIU</h1>
+        <p>OCTÓGONO NATAL</p>
+    </header>
 
-  <div class="title-area">
-    <h1>CBPIU</h1>
-    <p>Octógono Natal • Circuito Brasileiro de Pump It Up</p>
-  </div>
+    <div class="controls">
+        <div class="tabs">
+            <button class="btn-tab active" onclick="switchTab('single', event)">SINGLE</button>
+            <button class="btn-tab" onclick="switchTab('double', event)">DOUBLE</button>
+        </div>
+        <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Buscar jogador..." onkeyup="filterTable()">
+    </div>
 
-  <img src="assets/logo-octogono.png" class="logo" alt="Octógono Natal">
-</header>
+    <div class="table-container">
+        <table id="rankingTable">
+            <thead>
+                <tr id="tableHeader">
+                    <!-- O cabeçalho será gerado dinamicamente -->
+                    <th>Carregando...</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Os dados entram aqui -->
+            </tbody>
+        </table>
+    </div>
 
-<nav>
- <button onclick="showMode('single')">SINGLE</button>
-<button onclick="showMode('double')">DOUBLE</button>
-</nav>
+    <footer>
+        <p>Acompanhe as atualizações no Instagram: <a href="https://www.instagram.com/netao.piu" target="_blank">@netao.piu</a></p>
+    </footer>
 
-<div id="categories"></div>
+    <script>
+        // Os links exatos das suas planilhas
+        const SHEET_URL_SINGLE = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRn8UMw0k19GCLo1WgGZyAR1NOrdajkb5CD46hS6-5LMYDSpnuTrIpoNmLxhjzcXcwihMBBx85Yf_Jc/pub?gid=1011161537&single=true&output=csv';
+        const SHEET_URL_DOUBLE = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRn8UMw0k19GCLo1WgGZyAR1NOrdajkb5CD46hS6-5LMYDSpnuTrIpoNmLxhjzcXcwihMBBx85Yf_Jc/pub?gid=1689160095&single=true&output=csv';
 
-<script src="script.js"></script>
+        document.addEventListener("DOMContentLoaded", () => {
+            loadData('single');
+        });
 
+        async function loadData(mode) {
+            const tableHead = document.querySelector("#rankingTable thead");
+            const tableBody = document.querySelector("#rankingTable tbody");
+            
+            tableBody.innerHTML = "<tr><td colspan='5' style='text-align:center;'>Carregando dados do Octógono...</td></tr>";
+
+            const url = mode === 'single' ? SHEET_URL_SINGLE : SHEET_URL_DOUBLE;
+
+            try {
+                const response = await fetch(url);
+                const csvText = await response.text();
+                renderTable(csvText);
+            } catch (error) {
+                console.error("Erro ao carregar a planilha:", error);
+                tableBody.innerHTML = "<tr><td colspan='5' style='text-align:center; color: red;'>Falha ao carregar os dados. Verifique a conexão.</td></tr>";
+            }
+        }
+
+        // Função segura para ler o CSV (ignora vírgulas dentro de textos com aspas)
+        function parseCSVRow(str) {
+            let result = [];
+            let current = '';
+            let inQuotes = false;
+            for (let i = 0; i < str.length; i++) {
+                let char = str[i];
+                if (char === '"' && str[i+1] === '"') {
+                    current += '"'; i++; 
+                } else if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    result.push(current.trim());
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            result.push(current.trim());
+            return result;
+        }
+
+        function renderTable(csv) {
+            const tableHead = document.querySelector("#rankingTable thead");
+            const tableBody = document.querySelector("#rankingTable tbody");
+            tableBody.innerHTML = ""; 
+
+            const rows = csv.split('\n');
+            if(rows.length === 0) return;
+
+            // Extrai o cabeçalho (Primeira linha)
+            const headers = parseCSVRow(rows[0]);
+            let headerHTML = "<tr>";
+            headers.forEach(header => {
+                headerHTML += `<th>${header}</th>`;
+            });
+            headerHTML += "</tr>";
+            tableHead.innerHTML = headerHTML;
+
+            // Começa da linha 1 para pular o cabeçalho
+            for (let i = 1; i < rows.length; i++) {
+                const rowText = rows[i].trim();
+                if (!rowText) continue; 
+
+                const columns = parseCSVRow(rowText);
+                const tr = document.createElement('tr');
+                
+                columns.forEach((colData, index) => {
+                    let className = '';
+                    let content = colData;
+
+                    // Lógica para colorir e dar estilo
+                    if (index === 0) { // Assume que a coluna 0 é a Posição
+                        if(colData == "1") className = "pos-1";
+                        if(colData == "2") className = "pos-2";
+                        if(colData == "3") className = "pos-3";
+                    }
+
+                    // Verifica se tem Grade SSS, SS ou S em qualquer coluna para estilizar
+                    let upperCol = colData.toUpperCase();
+                    if (upperCol === 'SSS' || upperCol.includes('SSS')) className = 'grade-sss';
+                    else if (upperCol === 'SS' || upperCol.includes('SS+')) className = 'grade-ss';
+                    else if (upperCol === 'S') className = 'grade-s';
+
+                    tr.innerHTML += `<td class="${className}">${content}</td>`;
+                });
+
+                tableBody.appendChild(tr);
+            }
+        }
+
+        function switchTab(mode, event) {
+            const buttons = document.querySelectorAll('.btn-tab');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Limpa a busca ao trocar de aba
+            document.getElementById("searchInput").value = "";
+            
+            loadData(mode);
+        }
+
+        function filterTable() {
+            let input = document.getElementById("searchInput");
+            let filter = input.value.toUpperCase();
+            let table = document.getElementById("rankingTable");
+            let tr = table.getElementsByTagName("tr");
+
+            // Começa de 1 porque a 0 é o thead (cabeçalho não é afetado, mas na estrutura tbdoy é diferente)
+            // Para garantir, vamos pegar apenas os TRs do tbody
+            let tbodyTr = table.querySelector("tbody").getElementsByTagName("tr");
+
+            for (let i = 0; i < tbodyTr.length; i++) {
+                // Pega todas as colunas daquela linha para buscar em qualquer campo
+                let tds = tbodyTr[i].getElementsByTagName("td");
+                let match = false;
+                
+                for (let j = 0; j < tds.length; j++) {
+                    if (tds[j]) {
+                        let txtValue = tds[j].textContent || tds[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            match = true;
+                            break;
+                        }
+                    }
+                }
+                
+                if (match) {
+                    tbodyTr[i].style.display = "";
+                } else {
+                    tbodyTr[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 </body>
 </html>
